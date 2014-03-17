@@ -9,7 +9,7 @@ end
 
 def configure_remote
   run_git_command('remote rm jp')
-  run_git_command('remote add jp git://@configatron.git.provider@/@configatron.git.user@/@configatron.git.repo@.git')
+  run_git_command('remote add jp @configatron.git.provider@/@configatron.git.user@/@configatron.git.repo@.git')
 end
 
 def create_first_branches
