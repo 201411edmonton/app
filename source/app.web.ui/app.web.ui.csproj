@@ -19,6 +19,10 @@
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
     <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,12 +125,13 @@
     <Content Include="scripts\jquery-1.3.2.js" />
     <Content Include="views\App.master" />
     <None Include="images\Thumbs.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\app\app.csproj">
-      <Project>{922EF2FE-820B-4ED5-9D64-7D716E135719}</Project>
-      <Name>app</Name>
-    </ProjectReference>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -140,6 +145,12 @@
     <WebAppTarget Include="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Microsoft.WebApplication.targets">
       <InProject>False</InProject>
     </WebAppTarget>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\app\app.csproj">
+      <Project>{922ef2fe-820b-4ed5-9d64-7d716e135719}</Project>
+      <Name>app</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
