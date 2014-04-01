@@ -4,7 +4,7 @@ namespace :git do
     puts configatron.git.repo
     configatron.git.remotes.each do|remote|
       `git remote rm #{remote}`
-      `git remote add #{remote} http://#{configatron.git.provider}/#{remote}/#{configatron.git.repo}`
+      `git remote add #{remote} #{configatron.git.provider}:#{remote}/#{configatron.git.repo}`
     end
   end
 
