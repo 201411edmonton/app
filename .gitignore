@@ -33,3 +33,4 @@ Backup
 build_output
 kill_runner_processes.bat
 source/app.web.ui/web.*.config
+*.settings
