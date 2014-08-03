@@ -7,6 +7,7 @@ alias fl='./fetch_latest $*'
 alias gljp=./get_latest_from_jp
 alias gs='rake growl:start'
 alias push=./push
+alias rf=./run_first
 alias rr=./rr
 alias smc=./save_my_changes
 alias sne=./start_new_excercise
