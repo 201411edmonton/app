@@ -1,0 +1,15 @@
+alias br='rake build:run'
+alias clean='rake clean'
+alias ck=./code_kata
+alias ct=./continuous_testing
+alias fb='./fetch_branch $*'
+alias fl='./fetch_latest $*'
+alias gljp=./get_latest_from_jp
+alias gs='rake growl:start'
+alias push=./push
+alias rr=./rr
+alias smc=./save_my_changes
+alias sne=./start_new_excercise
+alias sr='rake specs:run'
+alias sv='rake specs:view'
+alias trash='git reset --hard && git clean -d -f'
