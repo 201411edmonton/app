@@ -1,4 +1,0 @@
-#!/bin/bash
-
-rake growl:start
-./continuous_testing

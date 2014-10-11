@@ -1,0 +1,9 @@
+require_relative 'init'
+
+expand do
+  Dir["**/*.settings"].each do |file|
+    load file
+  end
+
+  look_for_templates_in "**/*.{erb,mustache}"
+end

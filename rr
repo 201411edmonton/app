@@ -1,4 +1,0 @@
-#!/bin/bash
-
-taskkill -IM devenv.exe
-x.sln
