@@ -4,7 +4,10 @@ module Automation
 
     desc 'rebuild', 'rebuilds the project'
     def rebuild
-      `rake build:rebuild`
+      `rake clean`
+      Dir.glob("*.compile").each do |file|
+        `rake build:compile[#{file}]`
+      end
     end
   end
 end

@@ -4,21 +4,19 @@ module Automation
 
     desc 'init', 'kick off task'
     def init
-      invoke 'automation:clean'
+      invoke :clean
+      settings.automation.folders_to_create.each do |folder|
+        FileUtils.mkdir_p folder if ! File.exists?(folder)
+      end
     end
 
     desc 'clean', 'cleans out old files'
     def clean
-      [
-        settings.artifacts_dir,
-        settings.specs.dir,
-        settings.specs.report_dir,
-      ].each do |folder| 
-        FileUtils.mkdir_p folder if ! File.exists?(folder)
+      settings.automation.folders_to_clean.each do |folder|
+        FileUtils.rm_rf folder 
       end
     end
   end
-
 end
 
 require_relative 'automation/git_utils'

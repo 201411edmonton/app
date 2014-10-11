@@ -5,5 +5,13 @@ expand do
     load file
   end
 
+  user_profile = "#{File.basename(`whoami`.chomp)}.settings"
+
+  unless File.exist?(user_profile)
+    FileUtils.cp 'settings_template', user_profile
+    p "You may need to change the settings in the file #{user_profile}"
+  end
+  load user_profile
+
   look_for_templates_in "**/*.{erb,mustache}"
 end

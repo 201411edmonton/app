@@ -150,17 +150,17 @@
         </listenerAdapters>
 
         <sites>
-            <site name="@configatron.project@" id="1" serverAutoStart="true">
+            <site name="@settings.project@" id="1" serverAutoStart="true">
                 <application path="/">
-                <virtualDirectory path="/" physicalPath="<%= File.expand_path(configatron.web_staging_dir).as_win_path %>" />
+                <virtualDirectory path="/" physicalPath="<%= File.expand_path(settings.web_staging_dir).as_win_path %>" />
                 </application>
                 <bindings>
                     <binding protocol="http" bindingInformation=":8080:localhost" />
                 </bindings>
             </site>
             <siteDefaults>
-            <logFile logFormat="W3C" directory="<%= File.expand_path(configatron.web_log_dir)%>" />
-                <traceFailedRequestsLogging directory="<%=File.expand_path(configatron.web_trace_dir)%>" enabled="true" maxLogFileSizeKB="1024" />
+            <logFile logFormat="W3C" directory="<%= File.expand_path(settings.web_log_dir)%>" />
+                <traceFailedRequestsLogging directory="<%= File.expand_path(settings.web_trace_dir)%>" enabled="true" maxLogFileSizeKB="1024" />
             </siteDefaults>
             <applicationDefaults applicationPool="Clr4IntegratedAppPool" />
             <virtualDirectoryDefaults allowSubDirConfig="true" />
