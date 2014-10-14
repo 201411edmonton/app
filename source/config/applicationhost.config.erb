@@ -150,7 +150,7 @@
         </listenerAdapters>
 
         <sites>
-            <site name="@settings.project@" id="1" serverAutoStart="true">
+        <site name="<%= settings.project %>" id="1" serverAutoStart="true">
                 <application path="/">
                 <virtualDirectory path="/" physicalPath="<%= File.expand_path(settings.web_staging_dir).as_win_path %>" />
                 </application>

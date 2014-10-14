@@ -107,6 +107,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MessageGenerator.cs" />
     <Compile Include="MessageGeneratorSpecs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -119,6 +120,6 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>cd $(SolutionDir)
-rake copy_config_files</PostBuildEvent>
+thor config:copy_files</PostBuildEvent>
   </PropertyGroup>
 </Project>

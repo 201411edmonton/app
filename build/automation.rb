@@ -16,6 +16,11 @@ module Automation
         FileUtils.rm_rf folder 
       end
     end
+
+    desc 'expand', 'Expand templates'
+    def expand
+      Expansion::CLIInterface.run("ExpansionFile")
+    end
   end
 end
 
@@ -25,4 +30,6 @@ require_relative 'automation/configuration'
 require_relative 'automation/git'
 require_relative 'automation/tools'
 require_relative 'automation/continuous_testing'
+require_relative 'automation/run'
+require_relative 'automation/processes'
 require_relative 'automation/specs'

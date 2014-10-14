@@ -1,0 +1,8 @@
+configure({
+  compile_unit: {
+    sources: Dir.glob("source/app/**/*.cs"),
+    references: delayed { settings.all_references },
+    output: delayed { File.join(settings.artifacts_dir,"#{settings.project}.specs.dll") }, 
+    target: :library
+  }
+})
