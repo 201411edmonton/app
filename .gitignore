@@ -14,7 +14,6 @@ artifacts
 UpgradeLog*
 _UpgradeReport_Files
 git.yaml
-Gemfile.lock
 *mm_cache*
 db_dev.rb
 log4net.config.xml
