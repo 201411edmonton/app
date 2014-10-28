@@ -85,7 +85,7 @@ command
     def update_to_latest_branch_on(remote_name)
       git <<command
 add -A
-commit -m 'Updated'
+commit -m "Updated"
 checkout clean
 command
 
