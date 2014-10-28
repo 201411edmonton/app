@@ -10,7 +10,7 @@ module Automation
 
       git <<command
 add -A
-commit -m 'Pushing new changes'
+commit -m "Pushing new changes"
 push origin
 command
     end
