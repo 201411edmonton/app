@@ -5,7 +5,7 @@ configure({
   git: {
     provider: 'github',
     user: '201411edmonton',
-    remotes: %w/developwithpassion/,
+    remotes: %w//,
     repo: 'app' 
   },
 
