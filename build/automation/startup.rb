@@ -16,7 +16,10 @@ command
 
     no_commands do
       def create_first_branches
-        %w/clean master starting_point master codekata starting_point/.each{|branch| checkout(branch)}
+        %w/clean master starting_point master codekata starting_point/.each do |branch| 
+          system("git checkout -b #{branch}")
+          system("git checkout #{branch}")
+        end
       end
     end
   end
