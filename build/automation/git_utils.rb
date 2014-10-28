@@ -24,16 +24,12 @@ module Automation
       end
     end
 
-    def run_git_command(command,capture_ouptut = false)
+    def run_git_command(command,capture_ouptut=false)
       full_command = "git #{command}"
       if (capture_ouptut)
         `#{full_command}`
       else
-        begin
-          system(full_command)
-        rescue Exception => e
-          puts e
-        end
+        system(full_command)
       end
     end
 

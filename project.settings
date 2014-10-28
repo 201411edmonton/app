@@ -3,8 +3,8 @@ configure({
   target: "Debug",
 
   git: {
-    provider: 'github',
-    user: '201411edmonton',
+    provider: missing("provider", __FILE__),
+    user: missing("user",__FILE__),
     remotes: potentially_change("remotes",__FILE__),
     repo: 'app' 
   },
