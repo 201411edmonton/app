@@ -19,7 +19,7 @@ module Automation
     end
     
     def git(here_doc)
-      here_doc.split('\r\n').each do |line|
+      here_doc.split('\n').each do |line|
         run_git_command(line)
       end
     end
