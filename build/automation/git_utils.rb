@@ -17,7 +17,7 @@ module Automation
         exit
       end
     end
-    
+
     def git(here_doc)
       here_doc.split("\n").each do |line|
         run_git_command(line)
@@ -72,32 +72,38 @@ command
     def choose_remote(remotes)
       pick_item_from(remotes,"Choose remote:")
     end
-  end
 
-  def get_latest_remote_branch_name(remote_name)
-    branch_pattern = /^\d*$/
-    branches = run_git_command("fetch #{remote_name}")
-    ref_name = File.join('.git', 'refs', 'remotes', remote_name)
-    latest_branch = Dir.entries(ref_name)
-    latest_branch = latest_branch.select{|folder| branch_pattern =~ folder}
-    latest_branch = latest_branch.sort{|first,second| second <=> first}.first
-  end
+    def get_latest_remote_branch_name(remote_name)
+      branch_pattern = /^\d*$/
+      branches = run_git_command("fetch #{remote_name}")
+      ref_name = File.join('.git', 'refs', 'remotes', remote_name)
+      latest_branch = Dir.entries(ref_name)
+      latest_branch = latest_branch.select{|folder| branch_pattern =~ folder}
+      latest_branch = latest_branch.sort{|first,second| second <=> first}.first
+    end
 
-  def update_to_latest_branch_on(remote_name)
-    git <<command
+    def update_to_latest_branch_on(remote_name)
+      git <<command
 add -A
 commit -m 'Updated'
 checkout clean
 command
 
-    latest_branch = get_latest_remote_branch_name(remote_name)
+      latest_branch = get_latest_remote_branch_name(remote_name)
 
-    new_branch = "pull_#{remote_name}_#{latest_branch}"
+      new_branch = "pull_#{remote_name}_#{latest_branch}"
 
-    git <<command
+      git <<command
 checkout -b #{new_branch}
 checkout #{new_branch}
 pull #{remote_name} #{latest_branch}
 command
+    end
+
+    def exit_if_on_branches(branches)
+      branches.each do |branch|
+        exit_if_on_the_branch(branch)
+      end
+    end
   end
 end

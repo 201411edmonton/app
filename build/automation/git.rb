@@ -48,13 +48,5 @@ reset --hard
 clean -df
 command
     end
-
-    no_commands do
-      def exit_if_on_branches(branches)
-        branches.each do |branch|
-          exit_if_on_the_branch(branch)
-        end
-      end
-    end
   end
 end
