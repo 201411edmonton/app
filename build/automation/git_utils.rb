@@ -24,9 +24,9 @@ module Automation
       end
     end
 
-    def run_git_command(command,capture_ouptut=false)
+    def run_git_command(command,capture_output=false)
       full_command = "git #{command}"
-      if (capture_ouptut)
+      if (capture_output)
         `#{full_command}`
       else
         system(full_command)
