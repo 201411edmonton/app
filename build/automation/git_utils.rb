@@ -29,7 +29,11 @@ module Automation
       if (capture_ouptut)
         `#{full_command}`
       else
-        system(full_command)
+        begin
+          system(full_command)
+        rescue Exception => e
+          puts e
+        end
       end
     end
 
