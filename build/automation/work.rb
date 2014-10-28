@@ -23,7 +23,7 @@ command
       new_branch_name = current_time.strftime("%Y%m%d%H%M%S%3N")
       git <<command
 add -A
-commit -m 'Committing'
+commit -m "Committing"
 command
 
       branch_name = ask("Enter a meaningful branch name (leave empty if you don't need one)") || ""

@@ -19,7 +19,7 @@ command
 
       git <<command
 add -A
-commit -m 'Committing'
+commit -m "Committing"
 pull jp master
 command
     end
