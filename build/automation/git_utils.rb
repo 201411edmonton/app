@@ -19,14 +19,13 @@ module Automation
     end
     
     def git(here_doc)
-      here_doc.split('\n').each do |line|
+      here_doc.split('\r').each do |line|
         run_git_command(line)
       end
     end
 
     def run_git_command(command,capture_output=false)
       full_command = "git #{command}"
-      puts "Running command: #{full_command}"
       if (capture_output)
         `#{full_command}`
       else
