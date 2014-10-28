@@ -3,9 +3,9 @@ configure({
   target: "Debug",
 
   git: {
-    provider: missing("provider", __FILE__),
-    user: missing("user",__FILE__),
-    remotes: potentially_change("remotes",__FILE__),
+    provider: 'github',
+    user: '201411edmonton',
+    remotes: %w/developwithpassion/,
     repo: 'app' 
   },
 
