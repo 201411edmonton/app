@@ -8,11 +8,7 @@ module Automation
     end
 
     def last_time_changed
-      begin
-        File.mtime(@name)
-      rescue
-        (@last_changed_time || 0) + 1
-      end
+      File.mtime(@name)
     end
 
     def has_changed?
@@ -74,7 +70,7 @@ module Automation
       def remove_all_deleted
         remaining = all_files.select{|path,item| ! item.was_deleted?}
         files_were_deleted = remaining.length != all_files.length
-        all_files = remaining
+        @all_files = remaining
         files_were_deleted
       end
 
