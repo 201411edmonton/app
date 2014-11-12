@@ -4,15 +4,23 @@ module Automation
 
     def initialize(name)
       @name = name
-      @last_changed_time = File.mtime(name)
+      @last_changed_time = last_time_changed
+    end
+
+    def last_time_changed
+      begin
+        File.mtime(@name)
+      rescue
+        (@last_changed_time || 0) + 1
+      end
     end
 
     def has_changed?
-      @last_changed_time < File.mtime(@name)
+      @last_changed_time < last_time_changed
     end
 
     def update
-      @last_changed_time = File.mtime(@name)
+      @last_changed_time = last_time_changed
     end
 
     def was_deleted?
