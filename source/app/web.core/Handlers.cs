@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace app.web.core
@@ -14,7 +15,8 @@ namespace app.web.core
 
     public IHandleOneRequest get_the_handler_that_can_run(IProvideRequestDetails request)
     {
-      return all_handlers.FirstOrDefault(x => x.can_handle(request));
+      return all_handlers.First(x => x.can_handle(request));
+      throw new NotImplementedException();
     }
   }
 }
