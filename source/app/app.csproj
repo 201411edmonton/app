@@ -114,6 +114,7 @@
     <Compile Include="web.core\GeneralRequestHandlerSpecs.cs" />
     <Compile Include="web.core\Handlers.cs" />
     <Compile Include="web.core\HandlersSpecs.cs" />
+    <Compile Include="web.core\ICreateAHandlerWhenNoHandlersCanProcessTheRequest.cs" />
     <Compile Include="web.core\IGetHandlersForRequests.cs" />
     <Compile Include="web.core\IHandleAllIncomingWebRequests.cs" />
     <Compile Include="web.core\IHandleOneRequest.cs" />
