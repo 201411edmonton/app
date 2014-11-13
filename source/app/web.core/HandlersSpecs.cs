@@ -61,7 +61,7 @@ namespace app.web.core
         Because b = () =>
           result = sut.get_the_handler_that_can_run(request);
 
-        It returns_the_handler_created_by_the_special_case_factoryy = () =>
+        It returns_the_handler_created_by_the_special_case_factory = () =>
           result.ShouldEqual(special_case);
 
         static IHandleOneRequest result;
