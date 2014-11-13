@@ -17,7 +17,11 @@ namespace app.web.aspnet
    
     public class when_displaying_a_report : concern
     {
-      It first_observation = () =>        
+      
+        
+       // Because sut.
+        
+       // It displays_using_the_report_model = () =>        
         
     }
   }
