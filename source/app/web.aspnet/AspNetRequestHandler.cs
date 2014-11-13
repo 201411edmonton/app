@@ -17,7 +17,7 @@ namespace app.web.aspnet
     }
 
     public AspNetRequestHandler():this(new GeneralRequestHandler(),
-      WebDelegateStubs.create_controller_request)
+      DelegateStubs.create_controller_request)
     {
     }
 

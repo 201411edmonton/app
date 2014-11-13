@@ -3,15 +3,10 @@ using app.web.core;
 
 namespace app.web.aspnet.stubs
 {
-  public class WebDelegateStubs
+  public class DelegateStubs
   {
     public static ICreateAControllerRequestFromAnAspNetRequest create_controller_request = x =>
       new StubRequest();
-
-    public static ICreateAHandlerWhenNoHandlersCanProcessTheRequest create_missing_handler = delegate
-    {
-      throw new NotImplementedException("There is no handler that can handle this request");
-    };
 
     class StubRequest : IProvideRequestDetails
     {

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using app.web.aspnet.stubs;
 using app.web.core.stubs;
 
 namespace app.web.core
@@ -17,8 +16,8 @@ namespace app.web.core
       this.special_case_factory = special_case_factory;
     }
 
-    public Handlers():this(new StubRequestHandlers(),
-      WebDelegateStubs.create_missing_handler)
+    public Handlers() : this(new StubRequestHandlers(),
+      DelegateStubs.create_missing_handler)
     {
     }
 

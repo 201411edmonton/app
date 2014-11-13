@@ -125,7 +125,7 @@
     <Compile Include="web.aspnet\AspNetRequestHandler.cs" />
     <Compile Include="web.aspnet\AspNetRequestHandlerSpecs.cs" />
     <Compile Include="web.aspnet\ICreateAControllerRequestFromAnAspNetRequest.cs" />
-    <Compile Include="web.aspnet\stubs\WebDelegateStubs.cs" />
+    <Compile Include="web.aspnet\stubs\DelegateStubs.cs" />
     <Compile Include="web.core\GeneralRequestHandler.cs" />
     <Compile Include="web.core\GeneralRequestHandlerSpecs.cs" />
     <Compile Include="web.core\Handlers.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="web.core\RequestHandlerSpecs.cs" />
     <Compile Include="catalog_browsing\ViewTheMainDepartments.cs" />
     <Compile Include="catalog_browsing\ViewTheMainDepartmentsSpecs.cs" />
+    <Compile Include="web.core\stubs\DelegateStubs.cs" />
     <Compile Include="web.core\stubs\StubDisplayEngine.cs" />
     <Compile Include="web.core\stubs\StubRequestHandlers.cs" />
   </ItemGroup>
