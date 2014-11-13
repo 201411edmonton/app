@@ -41,6 +41,34 @@ namespace app.web.core
         static IProvideRequestDetails request;
         static List<IHandleOneRequest> all_handlers;
       }
+
+      public class and_it_does_not_have_the_handler
+      {
+        Establish c = () =>
+        {
+          request = fake.an<IProvideRequestDetails>();
+          all_handlers = Enumerable.Range(1, 1000).Select(x => fake.an<IHandleOneRequest>()).ToList();
+          depends.on<IEnumerable<IHandleOneRequest>>(all_handlers);
+          special_case = fake.an<IHandleOneRequest>();
+
+          depends.on<ICreateAHandlerWhenNoHandlersCanProcessTheRequest>(x =>
+          {
+            x.ShouldEqual(request);
+            return special_case;
+          });
+        };
+
+        Because b = () =>
+          result = sut.get_the_handler_that_can_run(request);
+
+        It returns_the_handler_created_by_the_special_case_factoryy = () =>
+          result.ShouldEqual(special_case);
+
+        static IHandleOneRequest result;
+        static IProvideRequestDetails request;
+        static List<IHandleOneRequest> all_handlers;
+        static IHandleOneRequest special_case;
+      }
     }
   }
 }
