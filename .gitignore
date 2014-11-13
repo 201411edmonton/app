@@ -34,4 +34,3 @@ kill_runner_processes.bat
 source/app.web.ui/web.*.config
 *.settings
 !project.settings
-packages
