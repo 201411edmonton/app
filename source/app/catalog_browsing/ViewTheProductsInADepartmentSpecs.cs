@@ -19,11 +19,13 @@ namespace app.catalog_browsing
       Establish c = () =>
       {
         request = fake.an<IProvideRequestDetails>();
-        department_products = new List<ProductLineItem>();
         products = depends.on<IFindProducts>();
         display_engine = depends.on<IDisplayInformation>();
+
+        department_products = new List<ProductLineItem>();
         input = new GetProductsInDepartmentInput();
 
+        request.setup(x => x.map<GetProductsInDepartmentInput>()).Return(input);
         products.setup(x => x.get_products_using(input)).Return(department_products);
       };
 
@@ -31,7 +33,7 @@ namespace app.catalog_browsing
         sut.process(request);
 
       It displays_the_products_in_a_department = () =>
-        display_engine.received(x => x.display(products));
+        display_engine.received(x => x.display(department_products));
 
       static IDisplayInformation display_engine;
       static IEnumerable<ProductLineItem> department_products;

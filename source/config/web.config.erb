@@ -28,9 +28,9 @@
   <system.webServer>
     <% if configatron.has_iis_express %>
     <handlers>
-      <add name="our_handler" path="*.2014"
+      <add name="front_controller" path="*.2014"
         verb="*"
-        type="app.web.aspnet.AspNetRequestHandler, <%= settings.project %>.specs.dll"/>
+        type="app.web.aspnet.AspNetRequestHandler, <%= settings.project %>.dll"/>
         </handlers> 
     <% end %>
   </system.webServer>
