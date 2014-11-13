@@ -24,7 +24,7 @@ namespace app.web.aspnet
 
       It displays_using_the_report_model = () =>
       {
-      }
+      };
 
       static AReport report;
     }
