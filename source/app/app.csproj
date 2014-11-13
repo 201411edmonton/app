@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="some_thing\this\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -109,6 +110,14 @@
   <ItemGroup>
     <Compile Include="MessageGenerator.cs" />
     <Compile Include="MessageGeneratorSpecs.cs" />
+    <Compile Include="web.core\GeneralRequestHandler.cs" />
+    <Compile Include="web.core\GeneralRequestHandlerSpecs.cs" />
+    <Compile Include="web.core\Handlers.cs" />
+    <Compile Include="web.core\HandlersSpecs.cs" />
+    <Compile Include="web.core\IGetHandlersForRequests.cs" />
+    <Compile Include="web.core\IHandleAllIncomingWebRequests.cs" />
+    <Compile Include="web.core\IHandleOneRequest.cs" />
+    <Compile Include="web.core\IProvideRequestDetails.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
