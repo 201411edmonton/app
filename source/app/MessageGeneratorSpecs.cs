@@ -1,7 +1,7 @@
 using developwithpassion.specifications.rhinomocks;
 using Machine.Specifications;
 
-namespace app.specs
+namespace app
 {
     public class MessageGeneratorSpecs
     {

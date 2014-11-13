@@ -1,8 +1,7 @@
 ﻿namespace app.web.core
 {
-  public interface IHandleOneRequest
+  public interface IHandleOneRequest : ISupportAFeature
   {
-    void process(IProvideRequestDetails request);
-    bool can_handle(IProvideRequestDetails requestt);
+    bool can_handle(IProvideRequestDetails request);
   }
 }

@@ -16,3 +16,7 @@
 
    1. Exceptions
    2. Null Object/Special Case
+
+5. All requests will have at most one logical handler that can process it.
+
+6. All handlers that require input will accept that input using a formal input model.
