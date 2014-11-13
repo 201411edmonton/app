@@ -110,14 +110,13 @@
   <ItemGroup>
     <Compile Include="catalog_browsing\GetProductsInDepartmentInput.cs" />
     <Compile Include="catalog_browsing\GetSubDepartmentsInput.cs" />
-    <Compile Include="catalog_browsing\IFindDepartments.cs" />
-    <Compile Include="catalog_browsing\IFindProducts.cs" />
     <Compile Include="catalog_browsing\ProductLineItem.cs" />
-    <Compile Include="catalog_browsing\stubs\StubStoreCatalog.cs" />
-    <Compile Include="catalog_browsing\ViewTheDepartmentsInADepartment.cs" />
-    <Compile Include="catalog_browsing\ViewTheDepartmentsInADepartmentSpecs.cs" />
-    <Compile Include="catalog_browsing\ViewTheProductsInADepartmentSpecs.cs" />
-    <Compile Include="catalog_browsing\ViewTheProductsInADepartment.cs" />
+    <Compile Include="catalog_browsing\stubs\GetTheDepartmentsInADepartment.cs" />
+    <Compile Include="catalog_browsing\stubs\GetTheMainDepartments.cs" />
+    <Compile Include="catalog_browsing\stubs\GetTheProductsInADepartment.cs" />
+    <Compile Include="web.aspnet\WebFormDisplayEngine.cs" />
+    <Compile Include="web.aspnet\WebFormDisplayEngineSpecs.cs" />
+    <Compile Include="web.core\ViewReportSpecs.cs" />
     <Compile Include="core\IProcessAn.cs" />
     <Compile Include="core\VisitorExtensions.cs" />
     <Compile Include="core\VisitorExtensionSpecs.cs" />
@@ -143,6 +142,7 @@
     <Compile Include="web.core\HandlersSpecs.cs" />
     <Compile Include="web.core\ICreateAHandlerWhenNoHandlersCanProcessTheRequest.cs" />
     <Compile Include="web.core\IDisplayInformation.cs" />
+    <Compile Include="web.core\IGetAReport.cs" />
     <Compile Include="web.core\IGetHandlersForRequests.cs" />
     <Compile Include="web.core\IHandleAllIncomingWebRequests.cs" />
     <Compile Include="web.core\IHandleOneRequest.cs" />
@@ -151,11 +151,10 @@
     <Compile Include="web.core\ISupportAFeature.cs" />
     <Compile Include="web.core\RequestHandler.cs" />
     <Compile Include="web.core\RequestHandlerSpecs.cs" />
-    <Compile Include="catalog_browsing\ViewTheMainDepartments.cs" />
-    <Compile Include="catalog_browsing\ViewTheMainDepartmentsSpecs.cs" />
     <Compile Include="web.core\stubs\DelegateStubs.cs" />
     <Compile Include="web.core\stubs\StubDisplayEngine.cs" />
     <Compile Include="web.core\stubs\StubRequestHandlers.cs" />
+    <Compile Include="web.core\ViewReport.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

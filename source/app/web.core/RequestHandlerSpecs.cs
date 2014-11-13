@@ -40,17 +40,20 @@ namespace app.web.core
       Establish c = () =>
       {
         request = fake.an<IProvideRequestDetails>();
-        feature = depends.on<ISupportAFeature>();
+        depends.on<IRunAFeature>(x =>
+        {
+          ran = true;
+        });
       };
 
       Because b = () =>
         sut.process(request);
 
       It runs_the_application_feature_for_the_request = () =>
-        feature.received(x => x.process(request));
+        ran.ShouldBeTrue();
 
-      static ISupportAFeature feature;
       static IProvideRequestDetails request;
+      static bool ran;
     }
   }
 }

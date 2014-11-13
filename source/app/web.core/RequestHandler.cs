@@ -3,9 +3,9 @@
   public class RequestHandler : IHandleOneRequest
   {
     IMatchARequest request_specification;
-    ISupportAFeature feature;
+    IRunAFeature feature;
 
-    public RequestHandler(IMatchARequest request_specification, ISupportAFeature feature)
+    public RequestHandler(IMatchARequest request_specification, IRunAFeature feature)
     {
       this.request_specification = request_specification;
       this.feature = feature;
@@ -13,7 +13,7 @@
 
     public void process(IProvideRequestDetails request)
     {
-      feature.process(request);
+      feature(request);
     }
 
     public bool can_handle(IProvideRequestDetails request)
