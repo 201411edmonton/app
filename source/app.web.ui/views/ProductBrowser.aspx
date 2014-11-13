@@ -18,7 +18,7 @@ CodeFile="ProductBrowser.aspx.cs" MasterPageFile="App.master" %>
                         <th></th>
                     </tr>
                 </thead>
-              <% foreach (var product in ((IEnumerable<ProductLineItem>) Context.Items["report"]))
+              <% foreach (var product in report)
                  { %>
                 <%-- for each product--%>
         <tr class="nonShadedRow">                    

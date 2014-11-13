@@ -114,8 +114,13 @@
     <Compile Include="catalog_browsing\stubs\GetTheDepartmentsInADepartment.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheMainDepartments.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheProductsInADepartment.cs" />
+    <Compile Include="web.aspnet\ICreateWebFormsToDisplayReports.cs" />
+    <Compile Include="web.aspnet\IGetTheCurrentRequest.cs" />
+    <Compile Include="web.aspnet\stubs\StubPathRegistry.cs" />
     <Compile Include="web.aspnet\WebFormDisplayEngine.cs" />
-    <Compile Include="web.aspnet\WebFormDisplayEngineSpecs.cs" />
+    <Compile Include="web.aspnet\WebFormViewFactorySpecs.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="web.core\ViewReportSpecs.cs" />
     <Compile Include="core\IProcessAn.cs" />
     <Compile Include="core\VisitorExtensions.cs" />
@@ -136,10 +141,6 @@
     <Compile Include="web.aspnet\AspNetRequestHandlerSpecs.cs" />
     <Compile Include="web.aspnet\ICreateAControllerRequestFromAnAspNetRequest.cs" />
     <Compile Include="web.aspnet\stubs\DelegateStubs.cs" />
-    <Compile Include="web.core\GeneralRequestHandler.cs" />
-    <Compile Include="web.core\GeneralRequestHandlerSpecs.cs" />
-    <Compile Include="web.core\Handlers.cs" />
-    <Compile Include="web.core\HandlersSpecs.cs" />
     <Compile Include="web.core\ICreateAHandlerWhenNoHandlersCanProcessTheRequest.cs" />
     <Compile Include="web.core\IDisplayInformation.cs" />
     <Compile Include="web.core\IGetAReport.cs" />
@@ -152,7 +153,6 @@
     <Compile Include="web.core\RequestHandler.cs" />
     <Compile Include="web.core\RequestHandlerSpecs.cs" />
     <Compile Include="web.core\stubs\DelegateStubs.cs" />
-    <Compile Include="web.core\stubs\StubDisplayEngine.cs" />
     <Compile Include="web.core\stubs\StubRequestHandlers.cs" />
     <Compile Include="web.core\ViewReport.cs" />
   </ItemGroup>

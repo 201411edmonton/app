@@ -1,4 +1,4 @@
-﻿using app.web.core.stubs;
+﻿using app.web.aspnet;
 
 namespace app.web.core
 {
@@ -13,11 +13,12 @@ namespace app.web.core
       this.query = query;
     }
 
-    public ViewReport(IGetAReport<Report> query) :this(new StubDisplayEngine(),
+    public ViewReport(IGetAReport<Report> query) : this(new WebFormDisplayEngine(),
       query)
     {
     }
-    public ViewReport(IGetAReportFromARequest<Report> query) :this(query.fetch_using)
+
+    public ViewReport(IGetAReportFromARequest<Report> query) : this(query.fetch_using)
     {
     }
 
