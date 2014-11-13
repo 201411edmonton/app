@@ -1,4 +1,5 @@
 ﻿using app.web.core;
+using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 using Machine.Specifications;
 
@@ -17,17 +18,23 @@ namespace app.web.aspnet
       Establish c = () =>
       {
         report = new AReport();
+        web_form_view_factory = depends.on<ICreateWebFormsToDisplayReports>();
       };
 
       Because b = () => 
         sut.display(report);
 
-      It displays_using_the_report_model = () =>
-      {
-      };
+      It creates_the_view_that_can_display_the_report = () =>
+        web_form_view_factory.received(x => x.create_view_to_display(report));
 
       static AReport report;
+      static ICreateWebFormsToDisplayReports web_form_view_factory;
     }
+  }
+
+  public interface ICreateWebFormsToDisplayReports
+  {
+    void create_view_to_display<Report>(Report report);
   }
 
   public class AReport
