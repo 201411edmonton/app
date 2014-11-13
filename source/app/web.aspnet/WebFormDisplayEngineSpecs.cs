@@ -1,33 +1,36 @@
-﻿ using app.web.core;
- using Machine.Specifications;
- using developwithpassion.specifications.rhinomocks;
- using developwithpassion.specifications.extensions;
+﻿using app.web.core;
+using developwithpassion.specifications.rhinomocks;
+using Machine.Specifications;
 
 namespace app.web.aspnet
-{  
-  [Subject(typeof(WebFormDisplayEngine))]  
+{
+  [Subject(typeof(WebFormDisplayEngine))]
   public class WebFormDisplayEngineSpecs
   {
     public abstract class concern : Observes<IDisplayInformation,
       WebFormDisplayEngine>
     {
-        
     }
 
-   
     public class when_displaying_a_report : concern
     {
-       Establish bw = () =>
-            {
-                var report = fake.an<ReportModel>();
+      Establish c = () =>
+      {
+        report = new AReport();
+      };
 
+      Because b = () => 
+        sut.display(report);
 
-            };
+      It displays_using_the_report_model = () =>
+      {
+      }
 
-        Because w = () => sut.display(report);
-
-        It displays_using_the_report_model = () => { true; }
-
+      static AReport report;
     }
+  }
+
+  public class AReport
+  {
   }
 }
