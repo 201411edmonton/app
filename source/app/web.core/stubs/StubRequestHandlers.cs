@@ -13,9 +13,9 @@ namespace app.web.core.stubs
 
     public IEnumerator<IHandleOneRequest> GetEnumerator()
     {
+      yield return handler_to_fetch_report(new GetTheProductsInADepartment().fetch_using);
       yield return handler_to_fetch_report(new GetTheMainDepartments().fetch_using);
       yield return handler_to_fetch_report(new GetTheDepartmentsInADepartment().fetch_using);
-      yield return handler_to_fetch_report(new GetTheProductsInADepartment().fetch_using);
     }
 
     public IHandleOneRequest handler_to_fetch_report<Query, Report>() where Query : IGetAReportFromARequest<Report>,
