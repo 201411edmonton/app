@@ -42,6 +42,32 @@ namespace app.containers.basic
         static ICreateADependency factory_that_can_create_dependency;
         static List<ICreateADependency> all_factories;
       }
+
+      public class and_it_does_not_have_the_factory
+      {
+        Establish c = () =>
+        {
+          special_case = fake.an<ICreateADependency>();
+          all_factories = Enumerable.Range(1, 100).Select(x => fake.an<ICreateADependency>()).ToList();
+
+          depends.on<IEnumerable<ICreateADependency>>(all_factories);
+          depends.on<ICreateADependencyFactoryWhenOneCantBeFound>(x =>
+          {
+            x.ShouldEqual(typeof(MyDependency));
+            return special_case;
+          });
+        };
+
+        Because b = () =>
+          result = sut.get_factory_that_can_create(typeof(MyDependency));
+
+        It returns_the_special_case = () =>
+          result.ShouldEqual(special_case);
+
+        static ICreateADependency result;
+        static List<ICreateADependency> all_factories;
+        static ICreateADependency special_case;
+      }
     }
 
     public class MyDependency
