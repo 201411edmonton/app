@@ -36,14 +36,21 @@ namespace app.containers.basic
 
   public class DependencyFactory : ICreateADependency
   {
-    public object create()
+      private IMatchAType type_matches;
+
+      public DependencyFactory(IMatchAType type_matches)
+      {
+          this.type_matches = type_matches;
+      }
+
+      public object create()
     {
       throw new NotImplementedException();
     }
 
     public bool can_create(Type type)
     {
-      throw new NotImplementedException();
+        return type_matches(type);
     }
   }
 }
