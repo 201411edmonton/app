@@ -51,10 +51,16 @@ namespace app.containers.basic
 
   public class DependencyFactories : IGetFactoriesForDependencies
   {
+    IEnumerable<ICreateADependency> factories;
+
+    public DependencyFactories(IEnumerable<ICreateADependency> factories)
+    {
+      this.factories = factories;
+    }
+
     public ICreateADependency get_factory_that_can_create(Type type)
     {
-        return get_factory_that_can_create(type);
-        //throw new NotImplementedException();
+      return factories.First(x => x.can_create(type));
     }
   }
 }
