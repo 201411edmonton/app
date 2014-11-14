@@ -106,16 +106,6 @@ namespace app.containers.basic
     }
   }
 
-  public interface IGetFactoriesForDependencies
-  {
-    ICreateADependency get_factory_that_can_create(Type type);
-  }
-
-  public interface ICreateADependency
-  {
-    object create();
-  }
-
   public class BasicContainer : IFetchDependencies
   {
     IGetFactoriesForDependencies factories;
