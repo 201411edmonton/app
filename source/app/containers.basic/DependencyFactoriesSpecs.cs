@@ -53,7 +53,8 @@ namespace app.containers.basic
   {
     public ICreateADependency get_factory_that_can_create(Type type)
     {
-      throw new NotImplementedException();
+        return get_factory_that_can_create(type);
+        //throw new NotImplementedException();
     }
   }
 }
