@@ -4,6 +4,7 @@ using app.containers.core;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 using Machine.Specifications;
+using Rhino.Mocks.Constraints;
 
 namespace app.containers.basic
 {
@@ -78,31 +79,6 @@ namespace app.containers.basic
         static Exception original_exception;
       }
 
-      public class using_non_generic_semantics
-      {
-        Establish c = () =>
-        {
-          command = fake.an<IDbCommand>();
-          factory = fake.an<ICreateADependency>();
-          factories = depends.on<IGetFactoriesForDependencies>();
-
-          factories.setup(x => x.get_factory_that_can_create(typeof(IDbCommand)))
-            .Return(factory);
-
-          factory.setup(x => x.create()).Return(command);
-        };
-
-        Because b = () =>
-          result = sut.an(typeof(IDbCommand));
-
-        It returns_the_item_created_by_the_factory_for_that_dependency = () =>
-          result.ShouldEqual(command);
-
-        static object result;
-        static IDbCommand command;
-        static ICreateADependency factory;
-        static IGetFactoriesForDependencies factories;
-      }
     }
   }
 
@@ -119,30 +95,15 @@ namespace app.containers.basic
   public class BasicContainer : IFetchDependencies
   {
     IGetFactoriesForDependencies factories;
-    ICreateAnExceptionWhenTheDependencyCantBeCreated create_custom_exception;
 
-    public BasicContainer(IGetFactoriesForDependencies factories,
-      ICreateAnExceptionWhenTheDependencyCantBeCreated createCustomException)
+    public BasicContainer(IGetFactoriesForDependencies factories)
     {
       this.factories = factories;
-      create_custom_exception = createCustomException;
     }
 
     public Dependency an<Dependency>()
     {
-      try
-      {
-        return (Dependency) factories.get_factory_that_can_create(typeof(Dependency)).create();
-      }
-      catch (Exception e)
-      {
-        throw create_custom_exception(typeof(Dependency), e);
-      }
-    }
-
-    public object an(Type dependency)
-    {
-      throw new NotImplementedException();
+        return (Dependency)factories.get_factory_that_can_create(typeof (Dependency)).create();
     }
   }
 }
