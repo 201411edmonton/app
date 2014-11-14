@@ -63,7 +63,7 @@ namespace app.containers.basic
 
     public Dependency an<Dependency>()
     {
-      throw new NotImplementedException();
+        return (Dependency)factories.get_factory_that_can_create(typeof (Dependency)).create();
     }
   }
 }
