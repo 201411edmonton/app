@@ -1,0 +1,14 @@
+c:\users\jp\repositories\github\dwp\app\artifacts\app.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\app.pdb
+c:\users\jp\repositories\github\dwp\app\artifacts\developwithpassion.specifications.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\developwithpassion.specifications.rhinomocks.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\Machine.Fakes.Adapters.RhinoMocks.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\Machine.Fakes.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\Machine.Specifications.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\Rhino.Mocks.dll
+c:\users\jp\repositories\github\dwp\app\artifacts\developwithpassion.specifications.pdb
+c:\users\jp\repositories\github\dwp\app\artifacts\developwithpassion.specifications.rhinomocks.pdb
+c:\users\jp\repositories\github\dwp\app\artifacts\Rhino.Mocks.xml
+c:\users\jp\repositories\github\dwp\app\obj\Debug\edit.csprojResolveAssemblyReference.cache
+c:\users\jp\repositories\github\dwp\app\obj\Debug\app.dll
+c:\users\jp\repositories\github\dwp\app\obj\Debug\app.pdb
