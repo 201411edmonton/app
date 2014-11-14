@@ -94,8 +94,7 @@ namespace app.containers.basic
     IGetTheConstructorToCreateAType ctor_picker;
     IFetchDependencies container;
 
-    public AutomaticDependencyFactory(Type type_to_create, IGetTheConstructorToCreateAType ctor_picker,
-      IFetchDependencies container)
+    public AutomaticDependencyFactory(Type type_to_create, IGetTheConstructorToCreateAType ctor_picker, IFetchDependencies container)
     {
       this.type_to_create = type_to_create;
       this.ctor_picker = ctor_picker;
@@ -105,6 +104,7 @@ namespace app.containers.basic
     public object create()
     {
       var ctor = ctor_picker(type_to_create);
+      throw new NotImplementedException();
     }
   }
 }
