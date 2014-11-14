@@ -10,7 +10,8 @@ configure({
       "web.core",
       "web.aspnet",
       "catalog_browsing",
-      "startup"
+      "startup",
+      "startup.steps"
     ].map { |folder| "source/app/#{folder}/**/*.cs" }),
 
     references: delayed { settings.all_references },
