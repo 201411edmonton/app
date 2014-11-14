@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using app.containers.core;
 using app.test_utilities;
@@ -104,7 +105,15 @@ namespace app.containers.basic
     public object create()
     {
       var ctor = ctor_picker(type_to_create);
-      throw new NotImplementedException();
+      var parameters = ctor.GetParameters();
+      var parameter_list = new List<object>();
+      foreach (var param in parameters)
+      {
+          var param_type = param.ParameterType;
+          parameter_list.Add(container.an(param_type));
+      }
+
+      return ctor.Invoke(parameter_list.ToArray());
     }
   }
 }
