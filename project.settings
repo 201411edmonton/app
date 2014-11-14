@@ -10,7 +10,7 @@ configure({
     "compile_units/all.compile",
   ],
 
-  compile_units: Dir.glob('compile_units/*.*'),
+  compile_units: Dir.glob('compile_units/**/*.*'),
   
   git: {
     provider: 'github',
