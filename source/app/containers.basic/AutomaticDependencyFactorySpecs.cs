@@ -78,10 +78,6 @@ namespace app.containers.basic
         this.other_item = other_item;
       }
 
-      public string other_thing()
-      {
-        throw new NotImplementedException();
-      }
     }
 
     public class OtherItem
