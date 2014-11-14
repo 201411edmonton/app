@@ -17,7 +17,14 @@ module Automation
       require_rake
 
       load compile_file
-      Rake::Task['build:compile'].invoke
+      project = settings.compile_unit
+
+      csc = CSC.new
+      csc.compile project.sources
+      csc.references project.references
+      csc.output = project.output
+      csc.target = project.target
+      csc.execute
     end
 
     desc 'web', 'compiles a web project'
@@ -26,25 +33,32 @@ module Automation
       require_rake
 
       load web_file
-      web_project = settings.web_unit
+      project = settings.web_unit
 
-      FileUtils.rm_rf web_project.bin_folder
-      FileUtils.mkdir_p web_project.bin_folder
+      FileUtils.rm_rf project.bin_folder
+      FileUtils.mkdir_p project.bin_folder
 
-      web_project.dependent_compiles.each do |file|
+      project.dependent_compiles.each do |file|
         unit = settings.compile_unit
         project(file)
         FileUtils.cp unit.output, "source/app.web.ui/Bin"
       end
 
-      Rake::Task['build:web'].invoke
+      asp_net_compiler = AspNetCompiler.new
+
+      asp_net_compiler.instance_eval do |c|
+        c.physical_path = project.physical_path
+        c.target_path = project.target_path
+        c.updateable = true
+        c.force = true
+        c.execute
+      end
     end
 
     no_commands do
       def require_rake
         require 'rake'
         require 'albacore'
-        require_relative '../legacy_tasks/build'
       end
     end
   end
