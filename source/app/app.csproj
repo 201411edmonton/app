@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="some_thing\this\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -114,28 +113,25 @@
     <Compile Include="catalog_browsing\stubs\GetTheDepartmentsInADepartment.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheMainDepartments.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheProductsInADepartment.cs" />
+    <Compile Include="containers.basic\BasicContainerSpecs.cs" />
     <Compile Include="containers.core\DependenciesSpecs.cs" />
     <Compile Include="containers.core\IConfigureTheContainerFacade.cs" />
     <Compile Include="containers.core\IFetchDependencies.cs" />
+    <Compile Include="web.aspnet\ICreatePageInstances.cs" />
     <Compile Include="web.aspnet\ICreateWebFormsToDisplayReports.cs" />
+    <Compile Include="web.aspnet\IDisplayA.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web.aspnet\IGetPathsToViews.cs" />
     <Compile Include="web.aspnet\IGetTheCurrentRequest.cs" />
     <Compile Include="web.aspnet\stubs\StubPathRegistry.cs" />
     <Compile Include="web.aspnet\WebFormDisplayEngine.cs" />
-    <Compile Include="web.aspnet\WebFormViewFactorySpecs.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="web.core\ViewReportSpecs.cs" />
     <Compile Include="core\IProcessAn.cs" />
     <Compile Include="core\VisitorExtensions.cs" />
     <Compile Include="core\VisitorExtensionSpecs.cs" />
     <Compile Include="events\EventBroker.cs" />
-    <Compile Include="events\EventBrokerSpecs.cs" />
     <Compile Include="events\IHandle.cs" />
     <Compile Include="events\IHandleEvents.cs" />
-    <Compile Include="events\IPublishEvents.cs" />
-    <Compile Include="events\IRegisterEventHandlers.cs" />
-    <Compile Include="MessageGenerator.cs" />
-    <Compile Include="MessageGeneratorSpecs.cs" />
     <Compile Include="catalog_browsing\DepartmentLineItem.cs" />
     <Compile Include="shopping\AddItemToCart.cs" />
     <Compile Include="shopping\ItemAddedToCart.cs" />
@@ -153,8 +149,6 @@
     <Compile Include="web.core\IMatchARequest.cs" />
     <Compile Include="web.core\IProvideRequestDetails.cs" />
     <Compile Include="web.core\ISupportAFeature.cs" />
-    <Compile Include="web.core\RequestHandler.cs" />
-    <Compile Include="web.core\RequestHandlerSpecs.cs" />
     <Compile Include="web.core\stubs\DelegateStubs.cs" />
     <Compile Include="web.core\stubs\StubRequestHandlers.cs" />
     <Compile Include="web.core\ViewReport.cs" />

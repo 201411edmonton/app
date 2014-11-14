@@ -1,5 +1,5 @@
 ﻿using System.Web;
-using app.web.aspnet.stubs;
+using app.containers.core;
 using app.web.core;
 
 namespace app.web.aspnet
@@ -14,6 +14,11 @@ namespace app.web.aspnet
     {
       this.front_controller = front_controller;
       this.request_factory = request_factory;
+    }
+
+    public AspNetRequestHandler():this(Dependencies.fetch.an<IHandleAllIncomingWebRequests>(),
+      Dependencies.fetch.an<ICreateAControllerRequestFromAnAspNetRequest>())
+    {
     }
 
     public void ProcessRequest(HttpContext context)

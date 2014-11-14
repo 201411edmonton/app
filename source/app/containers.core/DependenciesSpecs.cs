@@ -17,6 +17,7 @@ namespace app.containers.core
       {
         the_container_facade = fake.an<IFetchDependencies>();
         IConfigureTheContainerFacade configuration = () => the_container_facade;
+
         spec.change(() => Dependencies.configure_the_container).to(configuration);
       };
 
@@ -38,6 +39,12 @@ namespace app.containers.core
       throw new NotImplementedException("This needs to be configured by a starup pipeline");
     };
 
-    public static IFetchDependencies fetch { get; set; }
+    public static IFetchDependencies fetch
+    {
+      get
+      {
+        return configure_the_container();
+      }
+    }
   }
 }

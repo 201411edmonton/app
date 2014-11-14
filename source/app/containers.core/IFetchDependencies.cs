@@ -2,5 +2,7 @@
 {
   public interface IFetchDependencies
   {
+    Dependency an<Dependency>();
   }
+
 }
