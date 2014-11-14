@@ -45,6 +45,7 @@ namespace app.containers.basic
 
       public class and_it_does_not_have_the_factory
       {
+        //Arrange
         Establish c = () =>
         {
           special_case = fake.an<ICreateADependency>();
@@ -78,15 +79,17 @@ namespace app.containers.basic
   public class DependencyFactories : IGetFactoriesForDependencies
   {
     IEnumerable<ICreateADependency> factories;
+    ICreateADependencyFactoryWhenOneCantBeFound special_case_builder;
 
-    public DependencyFactories(IEnumerable<ICreateADependency> factories)
+    public DependencyFactories(IEnumerable<ICreateADependency> factories, ICreateADependencyFactoryWhenOneCantBeFound special_case_builder)
     {
       this.factories = factories;
+      this.special_case_builder = special_case_builder;
     }
 
     public ICreateADependency get_factory_that_can_create(Type type)
     {
-      return factories.First(x => x.can_create(type));
+      return factories.FirstOrDefault(x => x.can_create(type)) ?? special_case_builder(type);
     }
   }
 }
