@@ -84,11 +84,6 @@ namespace app.web.aspnet
       this.page_factory = page_factory;
     }
 
-    public WebFormViewFactory():this(new StubPathRegistry(),
-      DelegateStubs.create_page)
-    {
-    }
-
     public IHttpHandler create_view_to_display<Report>(Report report)
     {
       var path = path_registry.get_path_to_view_for<Report>();

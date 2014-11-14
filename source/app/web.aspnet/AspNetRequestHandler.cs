@@ -16,11 +16,6 @@ namespace app.web.aspnet
       this.request_factory = request_factory;
     }
 
-    public AspNetRequestHandler():this(new GeneralRequestHandler(),
-      DelegateStubs.create_controller_request)
-    {
-    }
-
     public void ProcessRequest(HttpContext context)
     {
       front_controller.process(request_factory(context));

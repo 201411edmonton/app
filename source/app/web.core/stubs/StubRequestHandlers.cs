@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using app.catalog_browsing.stubs;
 
 namespace app.web.core.stubs
 {
@@ -13,15 +13,16 @@ namespace app.web.core.stubs
 
     public IEnumerator<IHandleOneRequest> GetEnumerator()
     {
-      yield return handler_to_fetch_report(new GetTheMainDepartments().fetch_using);
-      yield return handler_to_fetch_report(new GetTheDepartmentsInADepartment().fetch_using);
-      yield return handler_to_fetch_report(new GetTheProductsInADepartment().fetch_using);
+      yield break;
+      //      yield return handler_to_fetch_report(new GetTheMainDepartments().fetch_using);
+      //      yield return handler_to_fetch_report(new GetTheDepartmentsInADepartment().fetch_using);
+      //      yield return handler_to_fetch_report(new GetTheProductsInADepartment().fetch_using);
     }
 
     public IHandleOneRequest handler_to_fetch_report<Query, Report>() where Query : IGetAReportFromARequest<Report>,
       new()
     {
-      return handler_to_fetch_report<Report>(new Query().fetch_using);
+      return handler_to_fetch_report(new Query().fetch_using);
     }
 
     public IHandleOneRequest handler_to_fetch_report<Report>(IGetAReport<Report> query)
@@ -31,7 +32,8 @@ namespace app.web.core.stubs
 
     static IRunAFeature create_report_viewer<Report>(IGetAReport<Report> query)
     {
-      return new ViewReport<Report>(query).process;
+//      return new ViewReport<Report>(query).process;
+      throw new NotImplementedException();
     }
   }
 }

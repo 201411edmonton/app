@@ -57,11 +57,6 @@ namespace app.web.aspnet
       this.view_factory = view_factory;
     }
 
-    public WebFormDisplayEngine():this(DelegateStubs.get_the_current_request,
-      new WebFormViewFactory())
-    {
-    }
-
     public void display<ReportModel>(ReportModel report)
     {
       var view = view_factory.create_view_to_display(report);

@@ -85,11 +85,6 @@ namespace app.web.core
       this.special_case_factory = special_case_factory;
     }
 
-    public Handlers() : this(new StubRequestHandlers(),
-      DelegateStubs.create_missing_handler)
-    {
-    }
-
     public IHandleOneRequest get_the_handler_that_can_run(IProvideRequestDetails request)
     {
       return all_handlers.FirstOrDefault(x => x.can_handle(request))

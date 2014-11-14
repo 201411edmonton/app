@@ -114,6 +114,8 @@
     <Compile Include="catalog_browsing\stubs\GetTheDepartmentsInADepartment.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheMainDepartments.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheProductsInADepartment.cs" />
+    <Compile Include="containers.core\DependenciesSpecs.cs" />
+    <Compile Include="containers.core\IConfigureTheContainerFacade.cs" />
     <Compile Include="web.aspnet\ICreateWebFormsToDisplayReports.cs" />
     <Compile Include="web.aspnet\IGetTheCurrentRequest.cs" />
     <Compile Include="web.aspnet\stubs\StubPathRegistry.cs" />

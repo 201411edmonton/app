@@ -1,6 +1,4 @@
-﻿using app.web.aspnet;
-
-namespace app.web.core
+﻿namespace app.web.core
 {
   public class ViewReport<Report> : ISupportAFeature
   {
@@ -11,15 +9,6 @@ namespace app.web.core
     {
       this.display_engine = display_engine;
       this.query = query;
-    }
-
-    public ViewReport(IGetAReport<Report> query) : this(new WebFormDisplayEngine(),
-      query)
-    {
-    }
-
-    public ViewReport(IGetAReportFromARequest<Report> query) : this(query.fetch_using)
-    {
     }
 
     public void process(IProvideRequestDetails request)
