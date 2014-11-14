@@ -39,16 +39,12 @@ namespace app.startup
 
     public static void run()
     {
-      factories = new List<ICreateADependency>();
+      configure_the_container();
+      configure_front_controller_component_layer();
+    }
 
-      IGetFactoriesForDependencies factory_registry = new DependencyFactories(factories,
-        DelegateStubs.create_missing_dependency_factory);
-
-      container = new BasicContainer(factory_registry,
-        DelegateStubs.create_exception_for_failure_to_create_dependency);
-
-      Dependencies.configure_the_container = () => container;
-
+    static void configure_front_controller_component_layer()
+    {
       register_factory<IHandleAllIncomingWebRequests, GeneralRequestHandler>(() => new GeneralRequestHandler(
         container.an<IGetHandlersForRequests>()));
 
@@ -60,7 +56,7 @@ namespace app.startup
 
       register_factory<IDisplayInformation, WebFormDisplayEngine>(() =>
         new WebFormDisplayEngine(container.an<IGetTheCurrentRequest>(),
-          container.an<ICreateWebFormsToDisplayReports>())) ;
+          container.an<ICreateWebFormsToDisplayReports>()));
 
       register_factory<ICreateWebFormsToDisplayReports,
         WebFormViewFactory>(() => new WebFormViewFactory(
@@ -72,6 +68,19 @@ namespace app.startup
       register_factory(web.aspnet.stubs.DelegateStubs.get_the_current_request);
       register_factory(web.aspnet.stubs.DelegateStubs.create_page);
       register_factory(web.aspnet.stubs.DelegateStubs.create_controller_request);
+    }
+
+    static void configure_the_container()
+    {
+      factories = new List<ICreateADependency>();
+
+      IGetFactoriesForDependencies factory_registry = new DependencyFactories(factories,
+        DelegateStubs.create_missing_dependency_factory);
+
+      container = new BasicContainer(factory_registry,
+        DelegateStubs.create_exception_for_failure_to_create_dependency);
+
+      Dependencies.configure_the_container = () => container;
     }
 
     static void register_factory<Contract, Implementation>(Func<Implementation> factory)

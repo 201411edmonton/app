@@ -2,6 +2,16 @@ configure({
   project: "app",
   target: "Debug",
 
+  win_path: Proc.new do |file|
+    file.gsub(/\//, "\\")
+  end,
+
+  build_order: [
+    "compile_units/all.compile",
+  ],
+
+  compile_units: Dir.glob('compile_units/**/*.*'),
+  
   git: {
     provider: 'github',
     user: '201411edmonton',
@@ -36,7 +46,6 @@ configure({
     report_dir: delayed{File.join(configatron.specs.dir,"report")},
     tools_folder: File.join(Dir.glob("packages/Machine.Specifications.*").first,"tools")
   },
-
 
   all_references: UniqueFiles.new(Dir.glob("packages/**/*.{dll,exe}")).all_files,
 

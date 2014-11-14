@@ -1,0 +1,24 @@
+configure({
+  compile_unit: {
+
+    sources: Dir.glob([
+      "core",
+      "events",
+      "test_utilities",
+      "containers.core",
+      "containers.basic",
+      "web.core",
+      "web.aspnet",
+      "catalog_browsing",
+      "startup"
+    ].map { |folder| "source/app/#{folder}/**/*.cs" }),
+
+    references: delayed { settings.all_references },
+
+    dependent_compiles: [
+    ],
+
+    output: delayed { File.join(settings.artifacts_dir,"#{settings.project}.dll") }, 
+    target: :library
+  }
+})

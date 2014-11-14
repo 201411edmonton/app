@@ -3,7 +3,11 @@ configure({
     bin_folder: "source/app.web.ui/Bin",
     physical_path: "source/app.web.ui",
     target_path: delayed { settings.web.staging_dir },
-    dependent_compiles: ["compile_units/app.compile"],
+
+    dependent_compiles: [
+      "compile_units/all.compile"
+    ],
+
     references: delayed { settings.all_references },
     target: :library
   }

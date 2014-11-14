@@ -24,6 +24,7 @@ module Automation
   end
 end
 
+require_relative 'automation/input_utils'
 require_relative 'automation/git_utils'
 require_relative 'automation/compile'
 require_relative 'automation/configuration'
@@ -35,3 +36,4 @@ require_relative 'automation/run'
 require_relative 'automation/processes'
 require_relative 'automation/work'
 require_relative 'automation/specs'
+require_relative 'automation/dynamic_edit'

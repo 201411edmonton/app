@@ -34,3 +34,7 @@ kill_runner_processes.bat
 source/app.web.ui/web.*.config
 *.settings
 !project.settings
+edit.csproj
+edit.csproj.user
+edit.v11.suo
+/obj
