@@ -20,3 +20,6 @@
 5. All requests will have at most one logical handler that can process it.
 
 6. All handlers that require input will accept that input using a formal input model.
+
+7. We are using a startup pipeline to handle startup activities:
+  * All steps in the startup pipeline must conform to the contract IRunAStartupStep. They must also provide a single constructor that takes the startup pipeline configuration service.
