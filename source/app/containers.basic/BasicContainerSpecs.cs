@@ -77,7 +77,6 @@ namespace app.containers.basic
         static Exception custom_exception;
         static Exception original_exception;
       }
-
     }
   }
 
@@ -94,24 +93,25 @@ namespace app.containers.basic
   public class BasicContainer : IFetchDependencies
   {
     IGetFactoriesForDependencies factories;
-      private ICreateAnExceptionWhenTheDependencyCantBeCreated create_custom_exception;
+    ICreateAnExceptionWhenTheDependencyCantBeCreated create_custom_exception;
 
-    public BasicContainer(IGetFactoriesForDependencies factories, ICreateAnExceptionWhenTheDependencyCantBeCreated createCustomException)
+    public BasicContainer(IGetFactoriesForDependencies factories,
+      ICreateAnExceptionWhenTheDependencyCantBeCreated createCustomException)
     {
-        this.factories = factories;
-        create_custom_exception = createCustomException;
+      this.factories = factories;
+      create_custom_exception = createCustomException;
     }
 
-      public Dependency an<Dependency>()
+    public Dependency an<Dependency>()
     {
-          try
-          {
-              return (Dependency) factories.get_factory_that_can_create(typeof (Dependency)).create();
-          }
-          catch (Exception e)
-          {
-              throw create_custom_exception(typeof(Dependency), e);
-          }
+      try
+      {
+        return (Dependency) factories.get_factory_that_can_create(typeof(Dependency)).create();
+      }
+      catch (Exception e)
+      {
+        throw create_custom_exception(typeof(Dependency), e);
+      }
     }
   }
 }
