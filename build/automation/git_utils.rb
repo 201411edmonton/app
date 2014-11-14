@@ -1,5 +1,7 @@
 module Automation
   module GitUtils
+    include ::Automation::InputUtils
+
     def exit_if_on_the_branch(branch)
       exit_if_branch_condition_fails(lambda{|expression,status|expression =~ status},branch,lambda{|item|  "You cant run this command on the branch #{item}"})
     end
