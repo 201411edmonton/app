@@ -26,7 +26,7 @@ namespace app.containers.basic
       Because b = () =>
         result = sut.create();
 
-      It return_the_item_created_by_the_provided_block = () =>
+      It return_the_item_created_by_the_provided_factory = () =>
         result.ShouldEqual(dependency);
 
       static object result;
