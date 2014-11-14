@@ -119,6 +119,7 @@
     <Compile Include="containers.basic\ICreateADependency.cs" />
     <Compile Include="containers.basic\ICreateADependencyFactoryWhenOneCantBeFound.cs" />
     <Compile Include="containers.basic\ICreateAnExceptionWhenTheDependencyCantBeCreated.cs" />
+    <Compile Include="containers.basic\ICreateOneDependency.cs" />
     <Compile Include="containers.basic\IGetFactoriesForDependencies.cs" />
     <Compile Include="containers.basic\IMatchAType.cs" />
     <Compile Include="containers.core\DependenciesSpecs.cs" />
