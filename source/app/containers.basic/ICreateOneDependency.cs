@@ -1,4 +1,7 @@
 ﻿namespace app.containers.basic
 {
-  public delegate object ICreateOneDependency();
+  public interface ICreateOneDependency
+  {
+    object create();
+  }
 }

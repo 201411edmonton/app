@@ -1,4 +1,5 @@
 ﻿using System;
+using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 using Machine.Specifications;
 
@@ -33,7 +34,9 @@ namespace app.containers.basic
       Establish c = () =>
       {
         dependency = fake.an<DependencyFactoriesSpecs.MyDependency>();
-        depends.on<ICreateOneDependency>(() => dependency);
+        real_factory = depends.on<ICreateOneDependency>();
+
+        real_factory.setup(x => x.create()).Return(dependency);
       };
 
       Because b = () =>
@@ -44,28 +47,29 @@ namespace app.containers.basic
 
       static DependencyFactoriesSpecs.MyDependency dependency;
       static object result;
+      static ICreateOneDependency real_factory;
     }
   }
 
   public class DependencyFactory : ICreateADependency
   {
-      private IMatchAType type_matches;
-      private ICreateOneDependency create_one_dependency;
+    IMatchAType type_matches;
+    ICreateOneDependency create_one_dependency;
 
-      public DependencyFactory(IMatchAType type_matches, ICreateOneDependency create_one_dependency)
-      {
-          this.type_matches = type_matches;
-          this.create_one_dependency = create_one_dependency;
-      }
+    public DependencyFactory(IMatchAType type_matches, ICreateOneDependency create_one_dependency)
+    {
+      this.type_matches = type_matches;
+      this.create_one_dependency = create_one_dependency;
+    }
 
-      public object create()
-      {
-          return create_one_dependency();
-      }
+    public object create()
+    {
+      return create_one_dependency.create();
+    }
 
     public bool can_create(Type type)
     {
-        return type_matches(type);
+      return type_matches(type);
     }
   }
 }
