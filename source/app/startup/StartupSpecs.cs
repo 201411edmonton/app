@@ -37,7 +37,7 @@ namespace app.startup
     public static void run()
     {
       Start.by.running<ConfigureTheContainer>()
-        .then<ConfigureTheFrontController>();
+        .then<ConfigureTheFrontController>()
         .finish_with<ConfiguringRoutes>();
     }
 
