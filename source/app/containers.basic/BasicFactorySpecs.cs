@@ -34,11 +34,18 @@ namespace app.containers.basic
     }
   }
 
-  public class BasicFactory:ICreateOneDependency
-  {
-    public object create()
+    public class BasicFactory : ICreateOneDependency
     {
-      throw new System.NotImplementedException();
+        private Func<object> object_creator;
+
+        public BasicFactory(Func<object> object_creator)
+        {
+            this.object_creator = object_creator;
+        }
+
+        public object create()
+        {
+            return object_creator();
+        }
     }
-  }
 }
