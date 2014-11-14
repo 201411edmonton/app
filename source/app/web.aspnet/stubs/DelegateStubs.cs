@@ -12,8 +12,7 @@ namespace app.web.aspnet.stubs
 
     public static IGetTheCurrentRequest get_the_current_request = () => HttpContext.Current;
 
-    public static ICreatePageInstances create_page = (path, type) =>
-      (IHttpHandler) BuildManager.CreateInstanceFromVirtualPath(path, type);
+    public static ICreatePageInstances create_page = BuildManager.CreateInstanceFromVirtualPath;
 
     class StubRequest : IProvideRequestDetails
     {

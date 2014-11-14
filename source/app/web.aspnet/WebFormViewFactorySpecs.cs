@@ -66,7 +66,7 @@ namespace app.web.aspnet
     public Report report { get; set; }
   }
 
-  public delegate IHttpHandler ICreatePageInstances(string path, Type type);
+  public delegate object ICreatePageInstances(string path, Type type);
 
   public interface IGetPathsToViews
   {

@@ -10,10 +10,9 @@ namespace app.web.aspnet.stubs
     {
       var views = new Dictionary<Type, string>
       {
-        {typeof(IEnumerable<DepartmentLineItem>), "~/views/DeparmentBrowser.aspx"},
+        {typeof(IEnumerable<DepartmentLineItem>), "~/views/DepartmentBrowser.aspx"},
         {typeof(IEnumerable<ProductLineItem>), "~/views/ProductBrowser.aspx"}
       };
-
 
       if (views.ContainsKey(typeof(Report))) return views[typeof(Report)];
 
