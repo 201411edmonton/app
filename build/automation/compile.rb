@@ -1,3 +1,6 @@
+require 'rake'
+require 'albacore'
+
 module Automation
   class Compile < Thor
     namespace :compile
@@ -6,18 +9,25 @@ module Automation
     def rebuild
       invoke 'automation:init'
 
-      Dir.glob("compile_units/*.compile").each do |file|
-        invoke :project, [file]
+      settings.build_order.each do |file|
+        project file
       end
     end
 
     desc 'project', 'compiles a project'
     def project(compile_file)
       ::Automation::General.new.init
-      require_rake
 
+      puts "Loading #{compile_file}"
       load compile_file
       project = settings.compile_unit
+
+      project.dependent_compiles.each do |file|
+        load file
+        unit = settings.compile_unit
+        project(file)
+        FileUtils.cp unit.output, "source/app.web.ui/Bin"
+      end
 
       csc = CSC.new
       csc.compile project.sources
