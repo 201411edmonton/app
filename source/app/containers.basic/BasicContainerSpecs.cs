@@ -25,6 +25,8 @@ namespace app.containers.basic
 
         factories.setup(x => x.get_factory_that_can_create(typeof(IDbCommand)))
           .Return(factory);
+
+        factory.setup(x => x.create()).Return(command);
       };
 
       Because b = () =>
