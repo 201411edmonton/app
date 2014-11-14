@@ -126,6 +126,8 @@
     <Compile Include="containers.core\DependenciesSpecs.cs" />
     <Compile Include="containers.core\IConfigureTheContainerFacade.cs" />
     <Compile Include="containers.core\IFetchDependencies.cs" />
+    <Compile Include="startup\StartupSpecs.cs" />
+    <Compile Include="startup\stubs\DelegateStubs.cs" />
     <Compile Include="web.aspnet\ICreatePageInstances.cs" />
     <Compile Include="web.aspnet\ICreateWebFormsToDisplayReports.cs" />
     <Compile Include="web.aspnet\IDisplayA.cs">
