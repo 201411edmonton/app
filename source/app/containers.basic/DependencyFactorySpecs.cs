@@ -50,16 +50,18 @@ namespace app.containers.basic
   public class DependencyFactory : ICreateADependency
   {
       private IMatchAType type_matches;
+      private ICreateOneDependency create_one_dependency;
 
-      public DependencyFactory(IMatchAType type_matches)
+      public DependencyFactory(IMatchAType type_matches, ICreateOneDependency create_one_dependency)
       {
           this.type_matches = type_matches;
+          this.create_one_dependency = create_one_dependency;
       }
 
       public object create()
-    {
-      throw new NotImplementedException();
-    }
+      {
+          return create_one_dependency();
+      }
 
     public bool can_create(Type type)
     {
