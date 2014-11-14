@@ -1,7 +1,6 @@
 ﻿using System;
-using Machine.Specifications;
 using developwithpassion.specifications.rhinomocks;
-using developwithpassion.specifications.extensions;
+using Machine.Specifications;
 
 namespace app.containers.core
 {
@@ -10,7 +9,6 @@ namespace app.containers.core
   {
     public abstract class concern : Observes
     {
-
     }
 
     public class when_providing_access_to_the_container_facade : concern
@@ -31,10 +29,6 @@ namespace app.containers.core
       static IFetchDependencies result;
       static IFetchDependencies the_container_facade;
     }
-  }
-
-  public interface IFetchDependencies
-  {
   }
 
   public class Dependencies
