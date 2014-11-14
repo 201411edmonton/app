@@ -120,19 +120,19 @@ namespace app.containers.basic
 
     public Dependency an<Dependency>()
     {
-      try
-      {
-        return (Dependency) factories.get_factory_that_can_create(typeof(Dependency)).create();
-      }
-      catch (Exception e)
-      {
-        throw create_custom_exception(typeof(Dependency), e);
-      }
+      return (Dependency)an(typeof(Dependency));
     }
 
     public object an(Type dependency)
     {
+      try
+      {
         return factories.get_factory_that_can_create(dependency).create();
+      }
+      catch (Exception e)
+      {
+        throw create_custom_exception(dependency, e);
+      }
     }
   }
 }

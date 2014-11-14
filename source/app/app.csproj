@@ -114,6 +114,7 @@
     <Compile Include="catalog_browsing\stubs\GetTheMainDepartments.cs" />
     <Compile Include="catalog_browsing\stubs\GetTheProductsInADepartment.cs" />
     <Compile Include="containers.basic\BasicContainerSpecs.cs" />
+    <Compile Include="containers.basic\DependencyFactoriesSpecs.cs" />
     <Compile Include="containers.basic\ICreateADependency.cs" />
     <Compile Include="containers.basic\ICreateAnExceptionWhenTheDependencyCantBeCreated.cs" />
     <Compile Include="containers.basic\IGetFactoriesForDependencies.cs" />
