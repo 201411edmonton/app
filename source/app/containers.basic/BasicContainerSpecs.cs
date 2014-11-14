@@ -4,7 +4,6 @@ using app.containers.core;
 using developwithpassion.specifications.extensions;
 using developwithpassion.specifications.rhinomocks;
 using Machine.Specifications;
-using Rhino.Mocks.Constraints;
 
 namespace app.containers.basic
 {
@@ -95,15 +94,24 @@ namespace app.containers.basic
   public class BasicContainer : IFetchDependencies
   {
     IGetFactoriesForDependencies factories;
+      private ICreateAnExceptionWhenTheDependencyCantBeCreated create_custom_exception;
 
-    public BasicContainer(IGetFactoriesForDependencies factories)
+    public BasicContainer(IGetFactoriesForDependencies factories, ICreateAnExceptionWhenTheDependencyCantBeCreated createCustomException)
     {
-      this.factories = factories;
+        this.factories = factories;
+        create_custom_exception = createCustomException;
     }
 
-    public Dependency an<Dependency>()
+      public Dependency an<Dependency>()
     {
-        return (Dependency)factories.get_factory_that_can_create(typeof (Dependency)).create();
+          try
+          {
+              return (Dependency) factories.get_factory_that_can_create(typeof (Dependency)).create();
+          }
+          catch (Exception e)
+          {
+              throw create_custom_exception(typeof(Dependency), e);
+          }
     }
   }
 }
