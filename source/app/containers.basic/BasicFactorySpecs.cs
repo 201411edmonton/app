@@ -1,20 +1,17 @@
-﻿ using System;
- using Machine.Specifications;
- using developwithpassion.specifications.rhinomocks;
- using developwithpassion.specifications.extensions;
+﻿using System;
+using developwithpassion.specifications.rhinomocks;
+using Machine.Specifications;
 
 namespace app.containers.basic
-{  
-  [Subject(typeof(BasicFactory))]  
+{
+  [Subject(typeof(BasicFactory))]
   public class BasicFactorySpecs
   {
     public abstract class concern : Observes<ICreateOneDependency,
       BasicFactory>
     {
-        
     }
 
-   
     public class when_creating_a_dependency : concern
     {
       Establish c = () =>
@@ -34,18 +31,18 @@ namespace app.containers.basic
     }
   }
 
-    public class BasicFactory : ICreateOneDependency
+  public class BasicFactory : ICreateOneDependency
+  {
+    Func<object> object_creator;
+
+    public BasicFactory(Func<object> object_creator)
     {
-        private Func<object> object_creator;
-
-        public BasicFactory(Func<object> object_creator)
-        {
-            this.object_creator = object_creator;
-        }
-
-        public object create()
-        {
-            return object_creator();
-        }
+      this.object_creator = object_creator;
     }
+
+    public object create()
+    {
+      return object_creator();
+    }
+  }
 }
