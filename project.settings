@@ -22,7 +22,6 @@ configure({
   },
 
   automation: {
-
     folders_to_create: delayed{[
       settings.artifacts_dir,
       settings.specs.dir,
