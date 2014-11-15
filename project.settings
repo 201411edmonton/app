@@ -2,10 +2,6 @@ configure({
   project: "app",
   target: "Debug",
 
-  win_path: Proc.new do |file|
-    file.gsub(/\//, "\\")
-  end,
-
   build_order: [
     "compile_units/all.compile",
   ],

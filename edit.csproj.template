@@ -105,8 +105,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <% configatron.compile_unit.sources.each do |file| %>
-      <Compile Include="<%= configatron.win_path.call(file) %>" />
+    <% settings.compile_unit.sources.each do |file| %>
+      <Compile Include="<%= file.as_win_path %>" />
     <% end %>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

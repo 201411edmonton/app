@@ -9,7 +9,7 @@ class File
     File.real_all_text_after_skipping_lines(file,0)
   end
 
-  def self.real_all_text_after_skipping_lines(file,number_of_lines_to_skip)
+  def self.read_all_text_after_skipping_lines(file,number_of_lines_to_skip)
     index = 1
     contents = ''
     File.open_for_read(file) do |line|

@@ -5,8 +5,9 @@ module Automation
     desc 'init', 'kick off task'
     def init
       invoke :clean
+
       settings.automation.folders_to_create.each do |folder|
-        FileUtils.mkdir_p folder if ! File.exists?(folder)
+        FileUtils.mkdir_p folder unless File.exists?(folder)
       end
     end
 
