@@ -1,0 +1,3 @@
+<% Dir.glob("source/app/startup.steps/*.cs").each do |step| %>
+  <%= File.basename(step, '.txt') %>
+<% end %>

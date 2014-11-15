@@ -1,8 +1,9 @@
-﻿namespace app.startup
+﻿using app.containers.core;
+
+namespace app.startup
 {
   public interface IHelpConfigureStartupPipelines
   {
-    void register_factory<Contract, Implementation>();
-    void register_factory<Contract>(Contract implementation);
+    IRegisterDependencyFactories component_registration { get; }
   }
 }

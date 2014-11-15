@@ -118,6 +118,7 @@
     <Compile Include="containers.basic\BasicFactorySpecs.cs" />
     <Compile Include="containers.basic\DependencyFactoriesSpecs.cs" />
     <Compile Include="containers.basic\DependencyFactorySpecs.cs" />
+    <Compile Include="containers.basic\DependencyRegistration.cs" />
     <Compile Include="containers.basic\ICreateADependency.cs" />
     <Compile Include="containers.basic\ICreateADependencyFactoryWhenOneCantBeFound.cs" />
     <Compile Include="containers.basic\ICreateAnExceptionWhenTheDependencyCantBeCreated.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="containers.core\DependenciesSpecs.cs" />
     <Compile Include="containers.core\IConfigureTheContainerFacade.cs" />
     <Compile Include="containers.core\IFetchDependencies.cs" />
+    <Compile Include="containers.core\IRegisterDependencyFactories.cs" />
     <Compile Include="core\CombinedActionSpecs.cs" />
     <Compile Include="core\ICombineActions.cs" />
     <Compile Include="core\IRunAnAction.cs" />

@@ -9,26 +9,28 @@ namespace app.startup.steps
 {
   public class ConfigureTheFrontController : IRunAStartupStep
   {
-    IHelpConfigureStartupPipelines startup_configuration;
+    IHelpConfigureStartupPipelines startup;
 
-    public ConfigureTheFrontController(IHelpConfigureStartupPipelines startup_configuration)
+    public ConfigureTheFrontController(IHelpConfigureStartupPipelines startup)
     {
-      this.startup_configuration = startup_configuration;
+      this.startup = startup;
     }
 
     public void run()
     {
-      startup_configuration.register_factory<IHandleAllIncomingWebRequests, GeneralRequestHandler>();
-      startup_configuration.register_factory<IGetHandlersForRequests, Handlers>();
-      startup_configuration.register_factory<IEnumerable<IHandleOneRequest>, StubRequestHandlers>();
-      startup_configuration.register_factory<IDisplayInformation, WebFormDisplayEngine>();
-      startup_configuration.register_factory<ICreateWebFormsToDisplayReports, WebFormViewFactory>();
-      startup_configuration.register_factory<IGetPathsToViews, StubPathRegistry>();
+      var component_registration = startup.component_registration;
 
-      startup_configuration.register_factory(DelegateStubs.create_missing_handler);
-      startup_configuration.register_factory(web.aspnet.stubs.DelegateStubs.get_the_current_request);
-      startup_configuration.register_factory(web.aspnet.stubs.DelegateStubs.create_page);
-      startup_configuration.register_factory(web.aspnet.stubs.DelegateStubs.create_controller_request);
+      component_registration.register<IHandleAllIncomingWebRequests, GeneralRequestHandler>();
+      component_registration.register<IGetHandlersForRequests, Handlers>();
+      component_registration.register<IEnumerable<IHandleOneRequest>, StubRequestHandlers>();
+      component_registration.register<IDisplayInformation, WebFormDisplayEngine>();
+      component_registration.register<ICreateWebFormsToDisplayReports, WebFormViewFactory>();
+      component_registration.register<IGetPathsToViews, StubPathRegistry>();
+
+      component_registration.register(DelegateStubs.create_missing_handler);
+      component_registration.register(web.aspnet.stubs.DelegateStubs.get_the_current_request);
+      component_registration.register(web.aspnet.stubs.DelegateStubs.create_page);
+      component_registration.register(web.aspnet.stubs.DelegateStubs.create_controller_request);
     }
   }
 }
