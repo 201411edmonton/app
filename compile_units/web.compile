@@ -1,7 +1,7 @@
 configure({
   web_unit: {
-    bin_folder: "source/app.web.ui/Bin",
-    physical_path: "source/app.web.ui",
+    bin_folder: delayed { settings.web.vs_output_dir },
+    physical_path: "source/ui",
     target_path: delayed { settings.web.staging_dir },
 
     dependent_compiles: [

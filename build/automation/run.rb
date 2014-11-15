@@ -6,9 +6,11 @@ module Automation
     def web(compile_file)
       system('kill_runner_processes.bat')
       invoke 'compile:web'
-      ::Automation::General.new.expand
+      invoke 'automation:expand', []
+      invoke 'config:copy_files', []
+
       system("start start_web_app.bat")
-      system("start #{configatron.browser} #{configatron.start_url}")
+      system("start #{settings.browser} #{settings.start_url}")
     end
   end
 end

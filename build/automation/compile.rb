@@ -65,7 +65,7 @@ module Automation
           load file
           unit = settings.compile_unit
           project(file)
-          FileUtils.cp unit.output, "source/app.web.ui/Bin"
+          FileUtils.cp unit.output, settings.web.vs_output_dir
         end
       end
     end

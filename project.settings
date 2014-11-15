@@ -19,6 +19,7 @@ configure({
     staging_dir: "web_staging",
     log_dir: delayed{File.join(settings.web.staging_dir,'logs')},
     trace_dir: delayed{File.join(settings.web.staging_dir,'trace')},
+    vs_output_dir: "source/ui/Bin"
   },
 
   automation: {
@@ -47,7 +48,7 @@ configure({
   artifacts_dir: "artifacts",
   start_url: "http://localhost:8080/views/default.aspx",
   config_dir: "source/config",
-  app_dir: delayed{"source/#{configatron.project}.web.ui"},
+  app_dir: delayed{"source/ui"},
   log_file_name: delayed{"#{configatron.project}_log.txt"},
   log_level: "DEBUG",
   runner_processes: delayed{%W/#{configatron.browser.base_name_without_extension} iisexpress cmd/}
