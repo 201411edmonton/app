@@ -123,7 +123,6 @@ namespace app.startup
       It runs_all_of_the_steps_in_sequence = () =>
         combined_step.received(x => x.run());
 
-      static IList<IRunAStartupStep> all_steps;
       static IRunAnAction first_step;
       static IRunAStartupStep second_step;
       static IRunAnAction combined_step;

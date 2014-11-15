@@ -18,16 +18,9 @@ module Automation
     def project(compile_file)
       ::Automation::General.new.init
 
-      puts "Loading #{compile_file}"
       load compile_file
       project = settings.compile_unit
-
-      project.dependent_compiles.each do |file|
-        load file
-        unit = settings.compile_unit
-        project(file)
-        FileUtils.cp unit.output, "source/app.web.ui/Bin"
-      end
+      compile_dependent_projects project
 
       csc = CSC.new
       csc.compile project.sources
@@ -48,11 +41,7 @@ module Automation
       FileUtils.rm_rf project.bin_folder
       FileUtils.mkdir_p project.bin_folder
 
-      project.dependent_compiles.each do |file|
-        unit = settings.compile_unit
-        project(file)
-        FileUtils.cp unit.output, "source/app.web.ui/Bin"
-      end
+      compile_dependent_projects project
 
       asp_net_compiler = AspNetCompiler.new
 
@@ -69,6 +58,15 @@ module Automation
       def require_rake
         require 'rake'
         require 'albacore'
+      end
+
+      def compile_dependent_projects(project)
+        project.dependent_compiles.each do |file|
+          load file
+          unit = settings.compile_unit
+          project(file)
+          FileUtils.cp unit.output, "source/app.web.ui/Bin"
+        end
       end
     end
   end
