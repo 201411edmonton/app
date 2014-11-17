@@ -38,7 +38,10 @@ command
     desc 'fetch_latest', 'fetch the latest branch from a remote'
     def fetch_latest
       remote_name = options[:remote_name] || choose_remote(get_all_available_non_origin_remotes) if remote_name == nil
-      get_specific_remote_branch_name_from(remote_name) unless remote_name.empty?
+      unless remote_name.empty?
+        branch = get_latest_remote_branch_name(remote_name)
+        get_specific_branch_on(remote_name, branch)
+      end
     end
 
     desc 'trash', 'trash the current work'
