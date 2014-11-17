@@ -31,7 +31,8 @@ command
 
       remote_name = options[:remote_name] || choose_remote(get_all_available_non_origin_remotes)
 
-      get_specific_remote_branch_name_from(remote_name) unless remote_name.empty?
+      branch = get_specific_remote_branch_name_from(remote_name) unless remote_name.empty?
+      get_specific_branch_on(remote_name, branch)
     end
 
     method_option :remote_name, default: nil
