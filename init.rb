@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift("build")
 
-require 'utils'
+require 'automation'
 require 'expansions'
 
 def delayed
