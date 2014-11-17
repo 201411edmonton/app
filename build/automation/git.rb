@@ -31,14 +31,14 @@ command
 
       remote_name = options[:remote_name] || choose_remote(get_all_available_non_origin_remotes)
 
-      update_to_specific_branch_on(remote_name) unless remote_name.empty?
+      get_specific_remote_branch_name_from(remote_name) unless remote_name.empty?
     end
 
     method_option :remote_name, default: nil
     desc 'fetch_latest', 'fetch the latest branch from a remote'
     def fetch_latest
       remote_name = options[:remote_name] || choose_remote(get_all_available_non_origin_remotes) if remote_name == nil
-      update_to_latest_branch_on(remote_name) unless remote_name.empty?
+      get_specific_remote_branch_name_from(remote_name) unless remote_name.empty?
     end
 
     desc 'trash', 'trash the current work'
