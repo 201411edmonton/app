@@ -77,21 +77,20 @@ command
     end
 
     def update_to_latest_branch_on(remote_name)
+      branch = get_latest_remote_branch_name(remote_name)
+      update_to_specific_branch_on(remote_name, branch)
+    end
+
+    def update_to_specific_branch_on(remote_name, branch=get_specific_remote_branch_name_from(remote_name))
       git <<command
 add -A
 commit -m "Updated"
 checkout clean
 command
 
-      latest_branch = get_latest_remote_branch_name(remote_name)
-
-      new_branch = "pull_#{remote_name}_#{latest_branch}"
-
-      git <<command
-checkout -b #{new_branch}
-checkout #{new_branch}
-pull #{remote_name} #{latest_branch}
-command
+      new_branch = "pull_#{remote_name}_#{branch}"
+      checkout new_branch
+      git "pull #{remote_name} #{branch}"
     end
 
     def exit_if_on_branches(branches)
