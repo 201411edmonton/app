@@ -22,13 +22,7 @@ module Automation
         FileUtils.cp(file,settings.artifacts_dir)
       end
 
-      spec_options = {
-        exe: "#{settings.artifacts_dir}/mspec-clr4.exe",
-        html: "#{settings.specs.report_dir}/#{settings.project}.specs.html",
-        x: "example",
-      }
-
-      line = build_runner_line(spec_options, settings.specs.assemblies)
+      line = build_runner_line(settings.specs.options, settings.specs.assemblies)
       system(line)
     end
 

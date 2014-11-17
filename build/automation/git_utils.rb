@@ -42,14 +42,6 @@ checkout #{branch_name}
 command
     end
 
-
-    def pick_item_from(items,prompt)
-      items.each_with_index{|item,index| p "#{index + 1} - #{item}"}
-      p prompt
-      index = ask(prompt).to_i
-      return index == 0 ? "": items[index-1]
-    end
-
     def get_specific_remote_branch_name_from(remote_name)
       git "fetch #{remote_name}"
       branches = run_git_command("branch --remote",true)

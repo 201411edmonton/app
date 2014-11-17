@@ -1,10 +1,15 @@
-alias ct='thor continuous_testing:run_it'
+export PATH="$PATH:$(find ./build/tools -name '.*' -prune -o -type d | tr "\n" ":")"
+
+alias br='thor run:web compile_units/web.compile'
+alias ct='thor growl:start && thor continuous_testing:run_it'
+alias edit='thor edit:edit $*'
 alias fb='thor git:fetch_branch $*'
 alias fl='thor git:fetch_latest $*'
 alias gljp='thor git::get_latest_from_jp'
-alias grs='thor tools:start_growl'
-alias push=./push
-alias rf='bundle install && thor startup:configure'
+alias grs='thor growl:start'
+alias ni='thor nuget:install'
+alias push=./build/scripts/push
+alias rf='bundle install && nuget update -self && ni && thor startup:configure'
 alias rr='taskkill -IM devenv.exe && x.sln'
 alias smc='thor work:save_my_changes'
 alias sne='thor work:start_new_exercise'
@@ -12,5 +17,3 @@ alias sr='thor specs:run_them'
 alias str='thor git:student_remotes'
 alias sv='thor specs:view'
 alias trash='thor git:trash'
-alias br='thor run:web compile_units/web.compile'
-alias edit='thor edit:edit $*'

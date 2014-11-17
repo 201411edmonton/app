@@ -5,7 +5,7 @@ module Automation
 
     desc 'student_remotes', 'set up the remotes for git'
     def student_remotes
-      configatron.git.remotes.each do|remote|
+      settings.git.remotes.each do|remote|
         git <<command
 remote rm #{remote}
 remote add #{remote} #{settings.git.provider}:#{remote}/#{settings.git.repo}

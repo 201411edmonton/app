@@ -8,7 +8,7 @@ module Automation
     def configure
       git <<command
 remote rm jp
-remote add jp #{configatron.git.provider}:#{configatron.git.user}/#{configatron.git.repo}.git
+remote add jp #{settings.git.provider}:#{settings.git.user}/#{settings.git.repo}.git
 command
 
       create_first_branches

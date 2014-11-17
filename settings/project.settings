@@ -1,0 +1,90 @@
+configure({
+  project: "app",
+
+  target: "Debug",
+
+  all_references: delayed { UniqueFiles.new(Dir.glob("packages/**/*.{dll,exe}")).all_files }, 
+
+  artifacts_dir: "artifacts",
+
+  config_dir: "source/config",
+
+  app_dir: delayed{"source/ui"},
+
+  runner_processes: delayed{%W/#{settings.browser.base_name_without_extension} iisexpress cmd/},
+
+  logging: {
+    file_name: delayed{"#{settings.project}_log.txt"},
+
+    level: "DEBUG",
+  },
+
+  build_order: [
+    "compile_units/all.compile",
+  ],
+
+  compile_units: Dir.glob("compile_units/*.compile"),
+
+  git: {
+    provider: 'github', #possible values [github, bitbucket]
+
+    user: '201411edmonton',
+
+    remotes: %w/safetypin kpetersontraining atpaton/,
+
+    repo: 'app' 
+  },
+
+  web: {
+    start_url: "http://localhost:8080/views/default.aspx",
+
+    staging_dir: "web_staging",
+    
+    log_dir: delayed{File.join(settings.web.staging_dir,'logs')},
+
+    trace_dir: delayed{File.join(settings.web.staging_dir,'trace')},
+
+    vs_output_dir: "source/ui/Bin"
+  },
+
+  automation: {
+    folders_to_create: delayed{[
+      settings.artifacts_dir,
+      settings.specs.dir,
+      settings.specs.report_dir,
+      settings.web.staging_dir
+    ]},
+
+    folders_to_clean: delayed{[
+      settings.artifacts_dir,
+    ]},
+  },
+
+  nuget:
+  {
+    packages_folder: 'packages',
+
+    packages_config: 'source/config/packages.config'
+  },
+
+  specs:
+  {
+    exe: delayed{"#{settings.artifacts_dir}/mspec-clr4.exe"},
+
+    options: delayed{
+      {
+        exe: settings.specs.exe ,
+
+        html: "#{settings.specs.report_dir}/#{settings.project}.specs.html",
+
+        x: "example"
+      }
+    },
+
+    assemblies: dynamic{Dir.glob("#{settings.artifacts_dir}/#{settings.project}.*dll")},
+
+    dir: delayed{File.join(settings.artifacts_dir,"specs")},
+
+    report_dir: delayed{File.join(settings.specs.dir,"report")},
+  },
+})

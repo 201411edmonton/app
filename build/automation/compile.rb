@@ -1,8 +1,8 @@
-require 'rake'
 require 'albacore'
 
 module Automation
   class Compile < Thor
+    include ::Automation::InputUtils
     namespace :compile
 
     desc 'rebuild', 'rebuilds the project'
@@ -12,6 +12,12 @@ module Automation
       settings.build_order.each do |file|
         project file
       end
+    end
+
+    desc 'selection', 'compiles the selected project'
+    def selection
+      compile_unit = pick_item_from(settings.compile_units, "Pick a compile unit to run")
+      project compile_unit
     end
 
     desc 'project', 'compiles a project'
@@ -33,7 +39,6 @@ module Automation
     desc 'web', 'compiles a web project'
     def web(web_file)
       ::Automation::General.new.init
-      require_rake
 
       load web_file
       project = settings.web_unit
@@ -54,12 +59,8 @@ module Automation
       end
     end
 
-    no_commands do
-      def require_rake
-        require 'rake'
-        require 'albacore'
-      end
 
+    no_commands do
       def compile_dependent_projects(project)
         project.dependent_compiles.each do |file|
           load file

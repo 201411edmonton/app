@@ -1,0 +1,9 @@
+configure({
+  web: {
+    start_url: "http://localhost:8080/views/Default.aspx",
+  },
+
+  :has_iis_express => true,
+  :iis_express => 'c:\utils\iis_express\iisexpress.exe',
+  :browser => 'C:\utils\firefox\firefox.exe'
+})

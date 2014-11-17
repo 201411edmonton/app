@@ -1,7 +1,0 @@
-config = 
-{
-  :has_iis_express => true,
-  :iis_express => 'c:\utils\iis_express\iisexpress.exe',
-  :browser => 'C:\utils\firefox\firefox.exe'
-}
-configatron.configure_from_hash config
