@@ -38,3 +38,5 @@ edit.csproj
 edit.csproj.user
 edit.v11.suo
 /obj
+/packages
+Gemfile.lock
