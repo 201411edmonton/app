@@ -78,10 +78,10 @@ command
 
     def update_to_latest_branch_on(remote_name)
       branch = get_latest_remote_branch_name(remote_name)
-      update_to_specific_branch_on(remote_name, branch)
+      get_specific_branch_on(remote_name, branch)
     end
 
-    def update_to_specific_branch_on(remote_name, branch=get_specific_remote_branch_name_from(remote_name))
+    def get_specific_branch_on(remote_name, branch=get_specific_remote_branch_name_from(remote_name))
       git <<command
 add -A
 commit -m "Updated"
